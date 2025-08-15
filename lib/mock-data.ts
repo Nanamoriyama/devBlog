@@ -1,7 +1,71 @@
 import { BlogPost } from './supabase'
 
 export const mockBlogPosts: BlogPost[] = [
-  {
+    {
+    id: '1755164225395',
+    title: 'Advanced React Patterns and Performance Optimization',
+    content: `# Advanced React Patterns and Performance Optimization
+
+## Introduction
+
+Welcome to another deep dive into frontend development! Today we're exploring advanced react patterns and performance optimization, a crucial aspect of modern web development that every frontend developer should understand.
+
+## Why This Matters
+
+In today's rapidly evolving web landscape, staying up-to-date with the latest technologies and best practices is essential. Advanced React Patterns and Performance Optimization represents a key area where developers can significantly impact user experience and application performance.
+
+## Key Concepts
+
+### Understanding the Fundamentals
+
+Before diving into advanced techniques, it's important to understand the core principles behind advanced react patterns and performance optimization. These fundamentals serve as the foundation for more complex implementations.
+
+### Best Practices
+
+Here are some essential best practices to keep in mind:
+
+1. **Performance First**: Always consider the performance implications of your implementation choices
+2. **Accessibility**: Ensure your solutions are accessible to all users
+3. **Maintainability**: Write code that your future self (and your team) will thank you for
+4. **Testing**: Implement comprehensive testing strategies
+
+## Practical Implementation
+
+\`\`\`javascript
+// Example implementation
+const exampleFunction = () => {
+  // Your implementation here
+  console.log('Building amazing frontend experiences!');
+};
+\`\`\`
+
+## Common Pitfalls to Avoid
+
+Even experienced developers can fall into traps when working with advanced react patterns and performance optimization. Here are some common mistakes and how to avoid them:
+
+- **Over-engineering**: Keep solutions simple and focused
+- **Ignoring browser compatibility**: Always test across different browsers
+- **Performance oversight**: Monitor and optimize regularly
+
+## Looking Forward
+
+The frontend development landscape continues to evolve rapidly. Staying informed about advanced react patterns and performance optimization and related technologies will help you build better, more efficient applications.
+
+## Conclusion
+
+Advanced React Patterns and Performance Optimization is an essential skill for modern frontend developers. By understanding these concepts and applying best practices, you can create more robust and user-friendly web applications.
+
+Keep experimenting, keep learning, and most importantly, keep building amazing things!
+
+---
+
+*What are your thoughts on advanced react patterns and performance optimization? Share your experiences and questions in the comments below.*`,
+    excerpt: 'Exploring advanced react patterns and performance optimization and its importance in modern frontend development. Learn key concepts, best practices, and practical implementation strategies.',
+    image_url: 'https://images.unsplash.com/photo-1755164225394?w=800&h=400&fit=crop&q=80&auto=format&ixlib=rb-4.0.3&keyword=computer',
+    published_at: '2025-08-14T09:37:05.395Z',
+    tags: ['Frontend', 'Web Development', 'JavaScript', 'React', 'Hooks']
+  },
+{
     id: '1',
     title: 'Building Modern React Applications with TypeScript',
     content: `# Introduction
@@ -62,7 +126,8 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, variant = 'primary' }) =
 Using useState with TypeScript:
 
 \`\`\`typescript
-const [user, setUser] = useState<User | null>(null);
+const [user, setUser
+] = useState<User | null>(null);
 const [loading, setLoading] = useState<boolean>(false);
 const [errors, setErrors] = useState<string[]>([]);
 \`\`\`

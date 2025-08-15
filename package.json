@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-post": "node scripts/generate-weekly-post.js"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
@@ -18,6 +19,7 @@
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
     "next": "15.4.6",
+    "openai": "^4.47.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "^3.3.1",

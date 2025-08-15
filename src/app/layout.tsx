@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../../contexts/theme-context";
 import { Navigation } from "../../components/navigation";
+import { FloatingActions } from "../../components/floating-actions";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -75,6 +76,7 @@ export default function RootLayout({
           <main className="pt-20">
             {children}
           </main>
+          <FloatingActions />
         </ThemeProvider>
       </body>
     </html>
