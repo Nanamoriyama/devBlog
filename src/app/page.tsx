@@ -1,4 +1,4 @@
-import { AnimatedHero } from '../../components/animated-hero'
+import { CoolHero } from '../../components/cool-hero'
 import { BlogListing } from '../../components/blog-listing'
 import { getAllBlogPosts } from '../../lib/blog-operations'
 import { PerformanceMonitor, PerformanceBudget, ResourceTimingAnalyzer } from '../../components/performance-monitor'
@@ -12,7 +12,7 @@ export default async function Home() {
       <PerformanceBudget />
       <ResourceTimingAnalyzer />
       <main className="min-h-screen">
-        <AnimatedHero />
+        <CoolHero />
         <BlogListing posts={posts} />
       </main>
     </>

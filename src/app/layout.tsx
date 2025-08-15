@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "../../contexts/theme-context";
 import { Navigation } from "../../components/navigation";
 import { FloatingActions } from "../../components/floating-actions";
+import { Chatbot } from "../../components/chatbot";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,10 +40,7 @@ export function generateViewport() {
   return {
     width: 'device-width',
     initialScale: 1,
-    themeColor: [
-      { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-      { media: '(prefers-color-scheme: dark)', color: '#111827' }
-    ],
+    themeColor: '#111827',
   }
 }
 
@@ -54,30 +51,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const theme = localStorage.getItem('theme') || 
-                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                document.documentElement.classList.toggle('dark', theme === 'dark');
-                document.documentElement.setAttribute('data-theme', theme);
-              })()
-            `,
-          }}
-        />
-      </head>
+      <head></head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased min-h-screen transition-colors duration-300`}
       >
-        <ThemeProvider>
-          <Navigation />
-          <main className="pt-20">
-            {children}
-          </main>
-          <FloatingActions />
-        </ThemeProvider>
+        <Navigation />
+        <main className="pt-20">
+          {children}
+        </main>
+        <FloatingActions />
+        <Chatbot />
       </body>
     </html>
   );

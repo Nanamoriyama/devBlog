@@ -1,14 +1,12 @@
 #!/usr/bin/env node
 
 const { createClient } = require('@supabase/supabase-js');
-const OpenAI = require('openai');
 const fs = require('fs').promises;
 const path = require('path');
 
 // Configuration
 const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const openaiApiKey = process.env.OPENAI_API_KEY;
 
 if (!supabaseUrl || !supabaseKey) {
   console.log('⚠️ Supabase credentials not found, updating mock data instead');
@@ -51,44 +49,7 @@ function createSlug(title) {
 async function generateBlogPost() {
   const randomTopic = blogTopics[Math.floor(Math.random() * blogTopics.length)];
   
-  // If OpenAI API key is available, use AI to generate content
-  if (openaiApiKey) {
-    try {
-      const openai = new OpenAI({ apiKey: openaiApiKey });
-      
-      const completion = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: "system",
-            content: "You are an expert frontend developer and technical writer. Write comprehensive, informative blog posts about frontend development topics. Include code examples, best practices, and practical insights."
-          },
-          {
-            role: "user",
-            content: `Write a detailed blog post about "${randomTopic}". The post should be around 800-1200 words, include practical examples, and be structured with proper headings. Use markdown formatting.`
-          }
-        ],
-        temperature: 0.7,
-        max_tokens: 2000
-      });
-
-      const content = completion.choices[0].message.content;
-      const excerpt = content.split('\n').find(line => line.length > 50)?.substring(0, 150) + '...';
-      
-      return {
-        title: randomTopic,
-        content,
-        excerpt,
-        slug: createSlug(randomTopic),
-        tags: extractTags(randomTopic),
-        image_url: getRandomUnsplashImage()
-      };
-    } catch (error) {
-      console.log('OpenAI API error, falling back to template:', error.message);
-    }
-  }
-  
-  // Fallback to template-based generation
+  // Use template-based generation (no OpenAI dependency)
   return generateTemplatePost(randomTopic);
 }
 
@@ -119,9 +80,22 @@ function extractTags(title) {
 }
 
 function getRandomUnsplashImage() {
-  const keywords = ['coding', 'programming', 'developer', 'computer', 'technology', 'web', 'software'];
-  const randomKeyword = keywords[Math.floor(Math.random() * keywords.length)];
-  return `https://images.unsplash.com/photo-${Date.now()}?w=800&h=400&fit=crop&q=80&auto=format&ixlib=rb-4.0.3&keyword=${randomKeyword}`;
+  // Curated list of high-quality tech/programming images from Unsplash
+  const images = [
+    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop&q=80&auto=format', // Code on screen
+    'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop&q=80&auto=format', // Code editor
+    'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&h=400&fit=crop&q=80&auto=format', // Code on laptop
+    'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=400&fit=crop&q=80&auto=format', // Testing code
+    'https://images.unsplash.com/photo-1605379399642-870262d3d051?w=800&h=400&fit=crop&q=80&auto=format', // Code screen
+    'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop&q=80&auto=format', // Technology
+    'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=400&fit=crop&q=80&auto=format', // Code editor dark
+    'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=800&h=400&fit=crop&q=80&auto=format', // Programming
+    'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=400&fit=crop&q=80&auto=format', // JavaScript
+    'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=400&fit=crop&q=80&auto=format', // React code
+  ];
+  
+  const randomImage = images[Math.floor(Math.random() * images.length)];
+  return randomImage;
 }
 
 function generateTemplatePost(topic) {
@@ -212,6 +186,7 @@ async function updateMockData(newPost) {
     excerpt: '${newPost.excerpt.replace(/'/g, "\\'")}',
     image_url: '${newPost.image_url}',
     published_at: '${new Date().toISOString()}',
+    slug: '${newPost.slug}',
     tags: [${newPost.tags.map(tag => `'${tag}'`).join(', ')}]
   }`;
     

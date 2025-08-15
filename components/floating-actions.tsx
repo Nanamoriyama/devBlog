@@ -222,37 +222,6 @@ export function FloatingActions() {
         )}
       </AnimatePresence>
 
-      {/* Reading Progress Ring */}
-      <motion.div
-        className="fixed top-6 right-6 w-12 h-12 z-40"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5 }}
-      >
-        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-          <path
-            className="text-gray-200 dark:text-gray-700"
-            stroke="currentColor"
-            strokeWidth="3"
-            fill="none"
-            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-          />
-          <motion.path
-            className="text-purple-600 dark:text-purple-400"
-            stroke="currentColor"
-            strokeWidth="3"
-            fill="none"
-            strokeLinecap="round"
-            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 0.7 }} // This would normally be connected to scroll progress
-            transition={{ duration: 1, delay: 1 }}
-          />
-        </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xs font-bold text-gray-600 dark:text-gray-400">70%</span>
-        </div>
-      </motion.div>
 
       {/* Background overlay when FAB is expanded */}
       <AnimatePresence>

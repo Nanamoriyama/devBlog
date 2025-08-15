@@ -17,10 +17,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Enable experimental features for better performance
-  experimental: {
-    optimizeCss: true,
-  },
+  // Disable experimental features that might interfere with Tailwind
+  // experimental: {
+  //   optimizeCss: true,
+  // },
 };
 
 export default nextConfig;

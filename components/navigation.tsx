@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { Menu, X, Home, Edit, User, Mail } from 'lucide-react'
-import { ThemeToggle } from './theme-toggle'
+import { Menu, X, Home, User, Mail, Briefcase } from 'lucide-react'
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -20,10 +19,10 @@ export function Navigation() {
   }, [])
 
   const navItems = [
-    { href: '/', label: 'Home', icon: Home },
-    { href: '/admin', label: 'Admin', icon: Edit },
-    { href: '/about', label: 'About', icon: User },
-    { href: '/contact', label: 'Contact', icon: Mail },
+    { href: '/', label: 'HOME', icon: Home },
+    { href: '/about', label: 'ABOUT', icon: User },
+    { href: '/projects', label: 'PROJECTS', icon: Briefcase },
+    { href: '/contact', label: 'CONTACT', icon: Mail },
   ]
 
   return (
@@ -34,7 +33,7 @@ export function Navigation() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg border-b border-gray-200/20 dark:border-gray-700/20'
+            ? 'glass border-b border-green-400/30 shadow-lg shadow-green-400/10'
             : 'bg-transparent'
         }`}
       >
@@ -46,15 +45,15 @@ export function Navigation() {
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center space-x-2"
               >
-                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">B</span>
+                <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-cyan-400 rounded-lg flex items-center justify-center neon-border animate-border-glow">
+                  <span className="text-black font-bold text-lg font-mono">{'<>'}</span>
                 </div>
                 <div className="hidden sm:block">
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                    DevBlog
+                  <h1 className="text-xl font-bold font-mono neon-green">
+                    DEV_BLOG
                   </h1>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 -mt-1">
-                    Frontend Developer
+                  <p className="text-xs text-gray-400 -mt-1 font-mono">
+                    FRONTEND.DEVELOPER
                   </p>
                 </div>
               </motion.div>
@@ -66,7 +65,7 @@ export function Navigation() {
                 <Link key={item.href} href={item.href}>
                   <motion.div
                     whileHover={{ y: -2 }}
-                    className="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-200"
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-300 hover:neon-cyan glass-hover transition-all duration-200 font-mono"
                   >
                     <item.icon className="w-4 h-4" />
                     <span className="font-medium">{item.label}</span>
@@ -77,12 +76,10 @@ export function Navigation() {
 
             {/* Right side */}
             <div className="flex items-center space-x-4">
-              <ThemeToggle />
-              
               {/* Mobile menu button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="md:hidden p-2 text-gray-300 hover:text-purple-400 rounded-lg hover:bg-gray-800 transition-colors"
                 aria-label="Toggle mobile menu"
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -133,7 +130,7 @@ export function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-              className="fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-900 shadow-2xl z-40 md:hidden border-l border-gray-200 dark:border-gray-700"
+              className="fixed top-0 right-0 h-full w-80 bg-gray-900 shadow-2xl z-40 md:hidden border-l border-gray-700"
             >
               <div className="p-6">
                 {/* Header */}
@@ -142,11 +139,11 @@ export function Navigation() {
                     <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
                       <span className="text-white font-bold">B</span>
                     </div>
-                    <span className="font-bold text-gray-900 dark:text-white">Menu</span>
+                    <span className="font-bold text-white">Menu</span>
                   </div>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="p-2 text-gray-400 hover:text-gray-200 rounded-lg hover:bg-gray-800"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -164,7 +161,7 @@ export function Navigation() {
                       <Link
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center space-x-3 p-4 rounded-xl text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-200"
+                        className="flex items-center space-x-3 p-4 rounded-xl text-gray-300 hover:text-purple-400 hover:bg-purple-900/20 transition-all duration-200"
                       >
                         <item.icon className="w-5 h-5" />
                         <span className="font-medium">{item.label}</span>
@@ -174,8 +171,8 @@ export function Navigation() {
                 </div>
 
                 {/* Social Links */}
-                <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white mb-4">
+                <div className="mt-12 pt-8 border-t border-gray-700">
+                  <p className="text-sm font-medium text-white mb-4">
                     Connect with me
                   </p>
                   <div className="flex space-x-3">
@@ -185,7 +182,7 @@ export function Navigation() {
                         href="#"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-200"
+                        className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-gray-400 hover:text-purple-400 hover:bg-purple-900/20 transition-all duration-200"
                       >
                         <span className="text-sm font-medium">{platform[0]}</span>
                       </motion.a>

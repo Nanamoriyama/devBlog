@@ -9,6 +9,7 @@ import { CreatePostModal } from '../../../components/create-post-modal'
 import { EditPostModal } from '../../../components/edit-post-modal'
 import { AdminPostCard } from '../../../components/admin-post-card'
 import { AdminStats } from '../../../components/admin-stats'
+import { AdminAuth } from '../../../components/admin-auth'
 import { formatDate } from '../../../lib/utils'
 
 export default function AdminPage() {
@@ -58,7 +59,8 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <AdminAuth>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-6 py-6">
@@ -214,6 +216,7 @@ export default function AdminPage() {
         post={selectedPost}
         onSuccess={loadPosts}
       />
-    </div>
+      </div>
+    </AdminAuth>
   )
 }

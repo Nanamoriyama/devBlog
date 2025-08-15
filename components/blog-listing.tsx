@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Filter, X, Calendar, Clock, Grid, List } from 'lucide-react'
 import { BlogPost } from '../lib/supabase'
-import { BlogGrid } from './blog-grid'
+import { CoolBlogGrid } from './cool-blog-grid'
 import { cn } from '../lib/utils'
 
 interface BlogListingProps {
@@ -72,7 +72,7 @@ export function BlogListing({ posts }: BlogListingProps) {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 min-h-screen">
+    <section className="py-20 bg-black min-h-screen">
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -81,11 +81,14 @@ export function BlogListing({ posts }: BlogListingProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-6">
-            My Blog
+          <h1 className="text-5xl md:text-6xl font-bold font-mono mb-6 animate-text-shimmer">
+            MY_BLOG
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Explore my thoughts on frontend development, design, and technology
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto font-mono">
+            <span className="neon-green">console.log</span>
+            <span className="text-white">(</span>
+            <span className="text-cyan-400">"Exploring frontend development & tech innovations"</span>
+            <span className="text-white">)</span>
           </p>
         </motion.div>
 
@@ -94,7 +97,7 @@ export function BlogListing({ posts }: BlogListingProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 mb-8"
+          className="bg-gray-800/50 rounded-2xl shadow-lg border border-gray-700/50 p-6 mb-8"
         >
           <div className="flex flex-col lg:flex-row gap-4 items-center">
             {/* Search Input */}
@@ -105,7 +108,7 @@ export function BlogListing({ posts }: BlogListingProps) {
                 placeholder="Search posts..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-3 border border-gray-600 rounded-xl bg-gray-700/50 text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
               />
             </div>
 
@@ -113,7 +116,7 @@ export function BlogListing({ posts }: BlogListingProps) {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              className="px-4 py-3 border border-gray-600 rounded-xl bg-gray-700/50 text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
@@ -261,7 +264,7 @@ export function BlogListing({ posts }: BlogListingProps) {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
           >
-            <BlogGrid posts={filteredAndSortedPosts} />
+            <CoolBlogGrid posts={filteredAndSortedPosts} />
           </motion.div>
         </AnimatePresence>
 

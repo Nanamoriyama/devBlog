@@ -63,7 +63,7 @@ export function AnimatedHero() {
     <motion.section
       ref={ref}
       style={{ y: springY, opacity, scale }}
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-slate-900 dark:via-slate-800 dark:to-purple-900 overflow-hidden transition-colors duration-500"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0">

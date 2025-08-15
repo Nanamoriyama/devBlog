@@ -1,15 +1,29 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Ultra Cool Frontend Developer Theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-background: #020202;
+  --color-foreground: #ffffff;
+  --color-primary: #00ff9f;
+  --color-secondary: #ff006e;
+  --color-accent: #00d4ff;
+  --color-warning: #ffbe0b;
+  --neon-glow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+body {
+  background: #020202;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #00ff9f15 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #ff006e15 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #00d4ff10 0%, transparent 50%);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Smooth theme transitions */
@@ -26,65 +40,88 @@
   transition: none !important;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - dark theme only */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(156, 163, 175, 0.1);
+  background: rgba(75, 85, 99, 0.1);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.4);
+  background: rgba(75, 85, 99, 0.4);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 0.6);
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: rgba(75, 85, 99, 0.1);
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: rgba(75, 85, 99, 0.4);
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
   background: rgba(75, 85, 99, 0.6);
 }
 
-/* Selection styling */
+/* Selection styling - dark mode only */
 ::selection {
-  background-color: rgba(147, 51, 234, 0.3);
-  color: inherit;
-}
-
-.dark ::selection {
   background-color: rgba(168, 85, 247, 0.3);
   color: inherit;
 }
 
-/* Focus styles */
+/* Focus styles - dark mode only */
 .focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-purple-400 dark:focus:ring-offset-gray-900;
+  outline: none;
 }
 
-/* Grid pattern background */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.5), 0 0 0 4px rgba(17, 24, 39, 1);
+}
+
+/* Cool grid pattern */
 .bg-grid-pattern {
   background-image: 
-    linear-gradient(to right, rgba(156, 163, 175, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(156, 163, 175, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
+    linear-gradient(to right, rgba(0, 255, 159, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 159, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
-.dark .bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(75, 85, 99, 0.2) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(75, 85, 99, 0.2) 1px, transparent 1px);
+/* Glassmorphism effects */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-hover {
+  transition: all 0.3s ease;
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Neon effects */
+.neon-text {
+  text-shadow: var(--neon-glow);
+}
+
+.neon-border {
+  box-shadow: var(--neon-glow);
+}
+
+.neon-green {
+  color: #00ff9f;
+  text-shadow: 0 0 5px #00ff9f, 0 0 10px #00ff9f, 0 0 15px #00ff9f;
+}
+
+.neon-pink {
+  color: #ff006e;
+  text-shadow: 0 0 5px #ff006e, 0 0 10px #ff006e, 0 0 15px #ff006e;
+}
+
+.neon-cyan {
+  color: #00d4ff;
+  text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 15px #00d4ff;
 }
 
 /* Text gradient utilities */
@@ -129,7 +166,7 @@
   transform: translateY(0);
 }
 
-/* Loading shimmer effect */
+/* Loading shimmer effect - dark mode only */
 @keyframes shimmer {
   0% {
     background-position: -200px 0;
@@ -142,105 +179,129 @@
 .shimmer {
   animation: shimmer 2s infinite linear;
   background: linear-gradient(90deg, 
-    rgba(229, 231, 235, 0.1) 0%, 
-    rgba(229, 231, 235, 0.3) 50%, 
-    rgba(229, 231, 235, 0.1) 100%);
-  background-size: 200px 100%;
-}
-
-.dark .shimmer {
-  background: linear-gradient(90deg, 
     rgba(75, 85, 99, 0.1) 0%, 
     rgba(75, 85, 99, 0.3) 50%, 
     rgba(75, 85, 99, 0.1) 100%);
+  background-size: 200px 100%;
 }
 
-/* Smooth entrance animations */
-@keyframes slideInUp {
+/* Cool animations */
+@keyframes neonPulse {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 5px currentColor);
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 20px currentColor);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slideInGlow {
   from {
     opacity: 0;
-    transform: translateY(100px);
+    transform: translateY(30px);
+    filter: blur(5px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-100px);
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(0, 255, 159, 0.3);
+    box-shadow: 0 0 5px rgba(0, 255, 159, 0.3);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  33% {
+    border-color: rgba(255, 0, 110, 0.3);
+    box-shadow: 0 0 5px rgba(255, 0, 110, 0.3);
   }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  66% {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
   }
 }
 
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
+@keyframes textShimmer {
+  0% {
+    background-position: -200% center;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  100% {
+    background-position: 200% center;
   }
 }
 
-@keyframes fadeIn {
-  from {
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100vh);
     opacity: 0;
   }
-  to {
+  10% {
     opacity: 1;
   }
-}
-
-@keyframes scaleIn {
-  from {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
     opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
-/* Animation classes */
-.animate-slide-in-up {
-  animation: slideInUp 0.6s ease-out forwards;
+/* Cool animation classes */
+.animate-neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
 }
 
-.animate-slide-in-down {
-  animation: slideInDown 0.6s ease-out forwards;
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.6s ease-out forwards;
+.animate-slide-glow {
+  animation: slideInGlow 0.8s ease-out forwards;
 }
 
-.animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out forwards;
+.animate-border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+.animate-text-shimmer {
+  background: linear-gradient(90deg, #00ff9f, #ff006e, #00d4ff, #00ff9f);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 3s ease-in-out infinite;
 }
 
-.animate-scale-in {
-  animation: scaleIn 0.6s ease-out forwards;
+.animate-matrix-rain {
+  animation: matrixRain 8s linear infinite;
+}
+
+/* Hover effects */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  filter: brightness(1.2) drop-shadow(0 0 10px currentColor);
+  transform: translateY(-2px);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
 }
