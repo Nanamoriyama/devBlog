@@ -30,7 +30,7 @@ export function BlogListing({ posts }: BlogListingProps) {
   }, [posts])
 
   const filteredAndSortedPosts = useMemo(() => {
-    let filtered = posts.filter(post => {
+    const filtered = posts.filter(post => {
       const matchesSearch = searchQuery === '' || 
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -87,7 +87,7 @@ export function BlogListing({ posts }: BlogListingProps) {
           <p className="text-xl text-gray-400 max-w-3xl mx-auto font-mono">
             <span className="neon-green">console.log</span>
             <span className="text-white">(</span>
-            <span className="text-cyan-400">"Exploring frontend development & tech innovations"</span>
+            <span className="text-cyan-400">&quot;Exploring frontend development &amp; tech innovations&quot;</span>
             <span className="text-white">)</span>
           </p>
         </motion.div>

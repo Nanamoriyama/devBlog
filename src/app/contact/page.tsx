@@ -38,13 +38,13 @@ export default function ContactPage() {
 
       if (response.ok) {
         setSubmitStatus('success')
-        setStatusMessage('Message sent successfully! I\'ll get back to you soon.')
+        setStatusMessage('Message sent successfully! I&apos;ll get back to you soon.')
         setFormData({ name: '', email: '', subject: '', message: '' })
       } else {
         setSubmitStatus('error')
         setStatusMessage(result.error || 'Failed to send message. Please try again.')
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
       setStatusMessage('Network error. Please check your connection and try again.')
     } finally {
@@ -147,7 +147,7 @@ export default function ContactPage() {
               <p className="text-xl text-gray-300 font-mono">
                 <span className="neon-green">console.log</span>
                 <span className="text-white">(</span>
-                <span className="text-cyan-400">"Let's build something amazing together!"</span>
+                <span className="text-cyan-400">&quot;Let&apos;s build something amazing together!&quot;</span>
                 <span className="text-white">)</span>
               </p>
             </div>
@@ -322,14 +322,14 @@ export default function ContactPage() {
                   <div className="text-gray-400">$ cat contact.json</div>
                   <div className="ml-2 space-y-1 text-gray-300">
                     <div><span className="text-cyan-400">{`{`}</span></div>
-                    <div className="ml-2"><span className="neon-pink">"name"</span>: <span className="text-yellow-400">"Nana Moriyama"</span>,</div>
-                    <div className="ml-2"><span className="neon-pink">"role"</span>: <span className="text-yellow-400">"Frontend Developer"</span>,</div>
-                    <div className="ml-2"><span className="neon-pink">"experience"</span>: <span className="text-blue-400">3</span>,</div>
-                    <div className="ml-2"><span className="neon-pink">"location"</span>: <span className="text-yellow-400">"Amsterdam, NL"</span>,</div>
-                    <div className="ml-2"><span className="neon-pink">"origin"</span>: <span className="text-yellow-400">"Japan"</span>,</div>
-                    <div className="ml-2"><span className="neon-pink">"email"</span>: <span className="text-yellow-400">"nana.moriyama.amsterdam@gmail.com"</span>,</div>
-                    <div className="ml-2"><span className="neon-pink">"availability"</span>: <span className="text-green-400">true</span>,</div>
-                    <div className="ml-2"><span className="neon-pink">"timezone"</span>: <span className="text-yellow-400">"CET (UTC+1)"</span></div>
+                    <div className="ml-2"><span className="neon-pink">&quot;name&quot;</span>: <span className="text-yellow-400">&quot;Nana Moriyama&quot;</span>,</div>
+                    <div className="ml-2"><span className="neon-pink">&quot;role&quot;</span>: <span className="text-yellow-400">&quot;Frontend Developer&quot;</span>,</div>
+                    <div className="ml-2"><span className="neon-pink">&quot;experience&quot;</span>: <span className="text-blue-400">3</span>,</div>
+                    <div className="ml-2"><span className="neon-pink">&quot;location&quot;</span>: <span className="text-yellow-400">&quot;Amsterdam, NL&quot;</span>,</div>
+                    <div className="ml-2"><span className="neon-pink">&quot;origin&quot;</span>: <span className="text-yellow-400">&quot;Japan&quot;</span>,</div>
+                    <div className="ml-2"><span className="neon-pink">&quot;email&quot;</span>: <span className="text-yellow-400">&quot;nana.moriyama.amsterdam@gmail.com&quot;</span>,</div>
+                    <div className="ml-2"><span className="neon-pink">&quot;availability&quot;</span>: <span className="text-green-400">true</span>,</div>
+                    <div className="ml-2"><span className="neon-pink">&quot;timezone&quot;</span>: <span className="text-yellow-400">&quot;CET (UTC+1)&quot;</span></div>
                     <div><span className="text-cyan-400">{`}`}</span></div>
                   </div>
                   

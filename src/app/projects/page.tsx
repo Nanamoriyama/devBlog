@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, Code, Briefcase, Heart, Star, ArrowRight } from 'lucide-react'
+import { ExternalLink, Code, Briefcase, Heart, Star, ArrowRight } from 'lucide-react'
 
 export default function ProjectsPage() {
   const fadeInUp = {
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
               <p className="text-xl text-gray-300 font-mono">
                 <span className="neon-green">const</span>
                 <span className="text-white"> portfolio = </span>
-                <span className="text-cyan-400">"Building digital experiences that matter"</span>
+                <span className="text-cyan-400">&quot;Building digital experiences that matter&quot;</span>
               </p>
             </div>
           </motion.div>
@@ -238,7 +238,7 @@ export default function ProjectsPage() {
                 INTERESTED_IN_WORKING_TOGETHER?
               </h3>
               <p className="text-gray-300 font-mono mb-6">
-                Let's create something amazing together. I'm always excited about new projects and opportunities.
+                Let&apos;s create something amazing together. I&apos;m always excited about new projects and opportunities.
               </p>
               <motion.a
                 href="/contact"

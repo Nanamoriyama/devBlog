@@ -19,12 +19,7 @@ export function AdminPostCard({ post, viewMode, index, onEdit, onDelete }: Admin
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: "easeOut"
-      }
+      y: 0
     }
   }
 
@@ -34,6 +29,11 @@ export function AdminPostCard({ post, viewMode, index, onEdit, onDelete }: Admin
         variants={cardVariants}
         initial="hidden"
         animate="visible"
+        transition={{
+          duration: 0.6,
+          delay: index * 0.1,
+          ease: "easeOut"
+        }}
         whileHover={{ x: 4 }}
         className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
       >
@@ -110,6 +110,11 @@ export function AdminPostCard({ post, viewMode, index, onEdit, onDelete }: Admin
       variants={cardVariants}
       initial="hidden"
       animate="visible"
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: "easeOut"
+      }}
       whileHover={{ y: -8, transition: { duration: 0.3 } }}
       className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden group border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300"
     >

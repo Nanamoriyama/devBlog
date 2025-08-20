@@ -172,7 +172,7 @@ export function CoolHero() {
           <motion.div variants={slideInGlow} className="mb-8">
             <div className="mb-4">
               <h2 className="text-2xl md:text-3xl font-mono neon-cyan mb-2">
-                HELLO, I'M
+                HELLO, I&apos;M
               </h2>
               <h1 className="text-4xl md:text-6xl font-bold font-mono animate-text-shimmer mb-4">
                 NANA MORIYAMA
@@ -193,14 +193,14 @@ export function CoolHero() {
             <p className="text-xl md:text-2xl text-gray-300 font-mono">
               <span className="text-gray-500">{'{'}</span>
               <br />
-              <span className="ml-4 neon-cyan">"crafting"</span>
+              <span className="ml-4 neon-cyan">&quot;crafting&quot;</span>
               <span className="text-white">: </span>
-              <span className="text-green-400">"digital experiences"</span>
+              <span className="text-green-400">&quot;digital experiences&quot;</span>
               <span className="text-white">,</span>
               <br />
-              <span className="ml-4 neon-pink">"technologies"</span>
+              <span className="ml-4 neon-pink">&quot;technologies&quot;</span>
               <span className="text-white">: [</span>
-              <span className="text-yellow-400">"React", "TypeScript", "Next.js"</span>
+              <span className="text-yellow-400">&quot;React&quot;, &quot;TypeScript&quot;, &quot;Next.js&quot;</span>
               <span className="text-white">]</span>
               <br />
               <span className="text-gray-500">{'}'}</span>
@@ -212,7 +212,7 @@ export function CoolHero() {
             variants={slideInGlow}
             className="flex justify-center gap-8 mb-12"
           >
-            {skills.map((skill, index) => (
+            {skills.map((skill) => (
               <motion.div
                 key={skill.name}
                 className="group glass-hover rounded-xl p-6 border border-white/10 hover-glow"
